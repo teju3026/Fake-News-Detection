@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fake News Detector</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f6f8;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #0077cc;
+            margin-bottom: 30px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            resize: vertical;
+        }
+
+        button {
+            margin-top: 15px;
+            width: 100%;
+            padding: 12px;
+            background-color: #0077cc;
+            color: white;
+            border: none;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #005fa3;
+        }
+
+        .result, .matched-fact {
+            margin-top: 30px;
+            padding: 15px;
+            font-size: 18px;
+            border-left: 6px solid #0077cc;
+            background-color: #eaf4fc;
+            border-radius: 5px;
+        }
+
+        .original-text {
+            margin-top: 20px;
+            background: #f8f8f8;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📰 Fake News Detection</h1>
+        <form method="POST" action="/predict">
+            <label for="news"><strong>Paste news article below:</strong></label><br><br>
+            <textarea name="news" rows="10" placeholder="Enter the news article here..."></textarea><br><br>
+            <button type="submit">🧠 Analyze</button>
+        </form>
+
+        {% if prediction %}
+            <div class="result">
+                <strong>Prediction:</strong> {{ prediction }}
+            </div>
+        {% endif %}
+
+        {% if original %}
+            <div class="original-text">
+                <strong>Analyzed Text:</strong><br><br>
+                {{ original }}
+            </div>
+        {% endif %}
+
+        {% if matched_fact %}
+            <div class="matched-fact">
+                <strong>Closest Verified Article:</strong><br><br>
+                {{ matched_fact }}<br><br>
+                <strong>Similarity:</strong> {{ similarity }}%
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
