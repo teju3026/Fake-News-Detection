@@ -1,0 +1,58 @@
+FAKE NEWS DETECTION AND FACT VERIFIER - STEP BY STEP INSTRUCTIONS
+
+PREREQUISITES:
+- Python 3.9 or 3.10 (installed)
+- Anaconda (recommended)
+- Internet connection to install dependencies
+
+1. PROJECT STRUCTURE:
+
+Fake-news-detector_Nextastra/
+├── app.py                  # Flask web app
+├── train.py                # Model training script
+├── model.pkl               # Saved ML model
+├── Fake.csv                #Dataset
+     True.csv
+├── news_dataset            # Cobined Dataset
+├── requirements.txt        # Python dependencies
+├── templates/
+│   └── index.html          # Frontend HTML
+└── README.md               # Project documentation
+├── Output.mp4              # Output (Execution video)
+
+2. SETUP INSTRUCTIONS:
+
+Step 1: Open Anaconda Prompt  
+
+Step 2: Navigate to your project folder
+    cd path_to_your/fake-news-detector
+
+Step 3: Create a virtual environment (optional but recommended)
+    conda create -n fakenews python=3.9
+    conda activate fakenews
+
+Step 4: Install dependencies
+    pip install -r requirements.txt
+
+Step 5: Place dataset files:
+    Download True.csv and Fake.csv from Kaggle:
+    https://www.kaggle.com/datasets/clmentbisaillon/fake-and-real-news-dataset
+    Place both files in the root of the project.
+
+3. TRAIN THE MODEL:
+    python train.py
+    -This will create 'model.pkl'
+
+4. Create A index.html file & also create a app.py file and write code here (frontend & Backend)
+
+5. RUN THE FLASK WEB APP:
+    python app.py
+
+6. OPEN IN BROWSER:
+    Visit: http://127.0.0.1:5000/
+    -Paste any news article to classify and verify.
+
+6. GITHUB SETUP:
+
+Submit Your Project On Git
+
